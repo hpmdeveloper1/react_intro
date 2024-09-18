@@ -15,17 +15,32 @@ import { CreateTodoButton } from './components/CreateTodoButton';
 
 localStorage.setItem('TODOS_V1', JSON.stringify(defaultToDos)); */
 
-function App() {
-  const localStorageToDos = localStorage.getItem("TODOS_V1");
-  let parseTodos = JSON.parse(localStorageToDos);
+function useLocalStorage(itemName, initialValue) {
+  
+  const localStorageItem = localStorage.getItem(itemName);
+  let parseItem = JSON.parse(localStorageItem);
+  
   //Si está vacio, inicializamos el array
-  if(!localStorageToDos){
-    localStorage.setItem('TODOS_V1', JSON.stringify([]));
+  if(!localStorageItem){
+    localStorage.setItem(itemName, JSON.stringify(initialValue));
   }else {
-    parseTodos =JSON.parse(localStorageToDos);
+    parseItem =JSON.parse(localStorageItem);
   }
 
-  const [todos, setTodos] = React.useState(parseTodos);
+  const [ item, setItem ] = React.useState(parseItem);
+
+  const handlerSaveItem = (newItem) => {
+    localStorage.setItem(itemName, JSON.stringify(newItem));
+    setItem(newItem);
+  }
+  
+  return [ item, handlerSaveItem]
+}
+
+function App() {
+  
+
+  const [todos, handlerSaveToDos] =useLocalStorage('TODOS_V1', []);
   const [searchValue, setSearchValue] = React.useState('');
   //console.log("Buscando..." + searchValue);
   
@@ -38,12 +53,6 @@ function App() {
       const searchText = searchValue.toLowerCase();
       return todoText.includes(searchText)
   });
-
-  const handlerSaveToDos = (newTodos) => {
-    localStorage.setItem('TODOS_V1', JSON.stringify(newTodos));
-    setTodos(newTodos);
-
-  }
 
   const completeTodo = (text) => {
     const newTodos = [...todos];
