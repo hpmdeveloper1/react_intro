@@ -1,6 +1,8 @@
+import ('../assets/css/todoSearch.css')
+
 function TodoSearch(){
     return (
-        <input placeholder="Estudiar curso"/>
+        <input className="todoSearch" placeholder="Estudiar curso"/>
     )
 }
 

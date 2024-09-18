@@ -1,6 +1,8 @@
+import '../assets/css/createTodoButton.css';
+
 function CreateTodoButton(){
     return (
-        <button>Guardar</button>
+        <button className="createTodoButton">+</button>
     )
 }
 
