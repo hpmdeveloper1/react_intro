@@ -1,44 +1,7 @@
-//import logo from './platzi.webp';
 import React from 'react';
-/* Components */
-import { TodoCounter } from '../components/TodoCounter';
-import { TodoSearch } from '../components/TodoSearch/TodoSearch';
-import { TodoList } from '../components/TodoList';
-import { TodoItem } from '../components/TodoItem';
-import { CreateTodoButton } from '../components/CreateTodoButton';
+import { AppUI } from './AppUI';
 /* Hooks */
 import { useLocalStorage } from './hooks/useLocalStorage';
-
-/* const defaultToDos = [
-  { text: "Leer Libro", completed: false},
-  { text: "Pagar internet", completed: false},
-  { text: "Pasear al perro", completed: true},
-  { text: "Terminar proyecto react", completed: false},
-];
-
-localStorage.setItem('TODOS_V1', JSON.stringify(defaultToDos)); */
-
-/* function useLocalStorage(itemName, initialValue) {
-  
-  const localStorageItem = localStorage.getItem(itemName);
-  let parseItem = JSON.parse(localStorageItem);
-  
-  //Si está vacio, inicializamos el array
-  if(!localStorageItem){
-    localStorage.setItem(itemName, JSON.stringify(initialValue));
-  }else {
-    parseItem =JSON.parse(localStorageItem);
-  }
-
-  const [ item, setItem ] = React.useState(parseItem);
-
-  const handlerSaveItem = (newItem) => {
-    localStorage.setItem(itemName, JSON.stringify(newItem));
-    setItem(newItem);
-  }
-  
-  return [ item, handlerSaveItem]
-} */
 
 function App() {
   
@@ -81,34 +44,16 @@ function App() {
     handlerSaveToDos(newTodos);
   }
 
-  return (
-    <>
-      <TodoCounter 
-        completed={completedTodos} 
-        total={totalTodos}
-      />
-
-      <TodoSearch 
+  return (  
+      <AppUI 
+        completedTodos={completedTodos}
+        totalTodos={totalTodos}
         searchValue={searchValue}
         setSearchValue={setSearchValue}
+        searchedTodos={searchedTodos}
+        completeTodo={completeTodo}
+        deleteTodo={deleteTodo}
       />
-        
-      <TodoList>
-        {
-          searchedTodos.map(todo => (
-            <TodoItem 
-              key={todo.text} 
-              text={todo.text} 
-              completed={todo.completed}
-              onComplete={() => completeTodo(todo.text)}
-              onDelete={ () => deleteTodo(todo.text)}
-            />
-          ))
-        }
-      </TodoList>
-      
-      <CreateTodoButton />
-    </>
   );
 }
 
