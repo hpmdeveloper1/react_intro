@@ -38,13 +38,17 @@
     left: 12px;
 }
 
+.icon-check:hover {
+    color: #4caf50;
+}
+
 .icon-check-active {
     color: #4caf50;
 }
 
 .icon-delete {
     position: absolute;
-    top: -24px;
+    /* top: -24px; */
     right: 0;
 }
 
