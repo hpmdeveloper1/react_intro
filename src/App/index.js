@@ -1,10 +1,13 @@
 //import logo from './platzi.webp';
 import React from 'react';
-import { TodoCounter } from './components/TodoCounter';
-import { TodoSearch } from './components/TodoSearch';
-import { TodoList } from './components/TodoList';
-import { TodoItem } from './components/TodoItem';
-import { CreateTodoButton } from './components/CreateTodoButton';
+/* Components */
+import { TodoCounter } from '../components/TodoCounter';
+import { TodoSearch } from '../components/TodoSearch/TodoSearch';
+import { TodoList } from '../components/TodoList';
+import { TodoItem } from '../components/TodoItem';
+import { CreateTodoButton } from '../components/CreateTodoButton';
+/* Hooks */
+import { useLocalStorage } from './hooks/useLocalStorage';
 
 /* const defaultToDos = [
   { text: "Leer Libro", completed: false},
@@ -15,7 +18,7 @@ import { CreateTodoButton } from './components/CreateTodoButton';
 
 localStorage.setItem('TODOS_V1', JSON.stringify(defaultToDos)); */
 
-function useLocalStorage(itemName, initialValue) {
+/* function useLocalStorage(itemName, initialValue) {
   
   const localStorageItem = localStorage.getItem(itemName);
   let parseItem = JSON.parse(localStorageItem);
@@ -35,7 +38,7 @@ function useLocalStorage(itemName, initialValue) {
   }
   
   return [ item, handlerSaveItem]
-}
+} */
 
 function App() {
   

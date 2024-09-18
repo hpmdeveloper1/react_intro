@@ -1,6 +1,6 @@
 import { AiFillCheckCircle } from "react-icons/ai";
 import { MdDeleteForever } from "react-icons/md";
-import ('../assets/css/todoItem.css')
+import ('./todoItem.css')
 
 
 function TodoItem({ text, completed, onComplete, onDelete }){
