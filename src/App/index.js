@@ -6,11 +6,11 @@ import { useLocalStorage } from './hooks/useLocalStorage';
 function App() {
   
 
-  const [todos, handlerSaveToDos] =useLocalStorage('TODOS_V1', []);
+  const { item: todos, handlerSaveItem, loading, error } = useLocalStorage('TODOS_V1', []);
   const [searchValue, setSearchValue] = React.useState('');
   //console.log("Buscando..." + searchValue);
   
-
+  console.log("TODOS", todos)
   const completedTodos = todos.filter(todo => !!todo.completed).length;
   const totalTodos = todos.length;
 
@@ -29,7 +29,7 @@ function App() {
     
     newTodos[todoIndex].completed = !newTodos[todoIndex].completed;
     
-    handlerSaveToDos(newTodos);
+    handlerSaveItem(newTodos);
   }
 
   const deleteTodo = (text) => {
@@ -41,11 +41,13 @@ function App() {
     
     newTodos.splice(todoIndex, 1);
     
-    handlerSaveToDos(newTodos);
+    handlerSaveItem(newTodos);
   }
 
   return (  
-      <AppUI 
+      <AppUI
+        loading={loading}
+        error={error}
         completedTodos={completedTodos}
         totalTodos={totalTodos}
         searchValue={searchValue}
