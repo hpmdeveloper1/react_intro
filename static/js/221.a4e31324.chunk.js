@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkplatzi_intro_react_base=self.webpackChunkplatzi_intro_react_base||[]).push([[221],{221:function(e,t,a){a.r(t),t.default={}}}]);
+//# sourceMappingURL=221.a4e31324.chunk.js.map
